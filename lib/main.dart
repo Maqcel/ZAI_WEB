@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zai/config/injection/injection.dart';
 
 import 'screens/home_screen/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   runApp(MyApp());
 }
 

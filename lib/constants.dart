@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
 
 class Constants {
+  //! API urls
+  //* POST Requests
+  static const String usersSignUpRequest =
+      'http://localhost:8080/api/auth/users/signup';
+  static const String usersLoginRequest =
+      'http://localhost:8080/api/auth/users/signin';
+  static const String categoryCreateRequest =
+      'http://localhost:8080/api/category/create';
+  static const String productCreateRequest =
+      'http://localhost:8080/api/product/create';
+  //* GET Requests
+  static const String getCategoryListsRequest =
+      'http://localhost:8080/api/category/list';
+  static const String getAllProductsRequest =
+      'http://localhost:8080/api/product/list';
+  static const String getProductsByCategoryRequest =
+      'http://localhost:8080/api/product'; //? + categoryId
+  static const String getProductsDetailsRequest =
+      'http://localhost:8080/api/product/details'; //? + productId
+  //* PUT Requests
+  static const String updateCategoryRequest =
+      'http://localhost:8080/api/category/update'; //? + categoryId
+  static const String updateProductRequest =
+      'http://localhost:8080/api/product/update'; //? + productId
+  //* DEL Requests
+  static const String deleteCategoryRequest =
+      'http://localhost:8080/api/category/delete'; //? + categoryId
+  static const String deleteProductRequest =
+      'http://localhost:8080/api/product/delete/'; //? + productId
+
+  //! API Request header
+  //? need an 'Authorization': 'Bearer $token' key for actions
+  static const Map<String, String> header = {
+    'Content-type': 'application/json',
+    'Accept': 'application/json',
+  };
+
   //? Colors
   static const Color usedPrimaryColor = Color(0xFFffb4a2);
   static const Color usedAccentColor = Color(0xFFffcdb2);
