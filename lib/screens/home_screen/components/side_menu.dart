@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../values/constants.dart';
 import 'auth_button.dart';
 import 'profile_button.dart';
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zai/config/injection/injection.dart';
 
-import 'screens/home_screen/home_screen.dart';
+import 'config/injection/injection.dart';
+import 'screens/auth_screen/auth_screen.dart';
+import 'values/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ZAI_WEB',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomeScreen(),
+      theme: theme(),
+      home: AuthScreen(),
     );
   }
 }

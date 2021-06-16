@@ -3,7 +3,7 @@ import 'package:zai/config/injection/injection.dart';
 import 'package:zai/repositories/auth_repository.dart';
 
 import '/extensions/neumorphism.dart';
-import '../../../constants.dart';
+import '../../../values/constants.dart';
 
 class ProfileButton extends StatelessWidget {
   final AuthRepository authRepository = getIt.get();

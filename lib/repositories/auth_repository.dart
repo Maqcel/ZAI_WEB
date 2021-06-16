@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 
-import '../constants.dart';
+import '../values/constants.dart';
 
 @lazySingleton
 class AuthRepository {

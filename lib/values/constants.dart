@@ -30,6 +30,8 @@ class Constants {
       'http://localhost:8080/api/category/delete'; //? + categoryId
   static const String deleteProductRequest =
       'http://localhost:8080/api/product/delete/'; //? + productId
+  //* IMAGE_URL START
+  static const String imageUrlPrefix = 'http://localhost:8080/product-photos/';
 
   //! API Request header
   //? need an 'Authorization': 'Bearer $token' key for actions
@@ -73,4 +75,12 @@ class Constants {
   //* Web Values
   static const double usedAuthScreenWebWidthParameter = 500.0;
   static const double usedAuthScreenWebHeightParameter = 650.0;
+
+  //? TextStyles
+  //* Body text
+  static const double usedBodyFontSize = 30.0;
+  static const String usedBodyFontName = 'Montserrat';
+  //* Header text
+  static const double usedHeaderFontSize = 30.0;
+  static const String usedHeaderFontName = 'Bebas';
 }

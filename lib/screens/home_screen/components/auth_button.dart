@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/extensions/neumorphism.dart';
-import '../../../constants.dart';
+import '../../../values/constants.dart';
 
 class AuthButton extends StatelessWidget {
   final bool isLogin;
