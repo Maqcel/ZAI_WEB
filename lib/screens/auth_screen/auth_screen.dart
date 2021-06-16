@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zai/config/exceptions/exceptions.dart';
+import 'package:zai/config/injection/injection.dart';
+import 'package:zai/cubits/log_in_cubit/log_in_cubit.dart';
+import 'package:zai/models/email_model/email.dart';
+import 'package:zai/models/password_model/password.dart';
 
 import '../../values/constants.dart';
 import 'components/login_button.dart';
@@ -12,8 +17,9 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final LogInCubit _logInCubit = LogInCubit(getIt.get());
 
-  bool isLogin = false;
+  bool isLogin = true;
 
   void changeForm() {
     setState(() {
@@ -49,28 +55,44 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: TextField(
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: "Email",
                   ),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (!Email(value!).isValid()) {
+                      return AuthException.invalidEmailFormat().getString();
+                    }
+                    _logInCubit.emailChange(value);
+                    return null;
+                  },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Constants.usedFieldContentPadding),
-                child: TextField(
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: "Password",
                   ),
                   textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (!Password(value!).isValid()) {
+                      return AuthException.invalidPasswordFormat().getString();
+                    }
+                    _logInCubit.passwordChange(value);
+                    return null;
+                  },
                 ),
               ),
-              isLogin ? LogInButton() : SignUpButton(),
+              isLogin ? LogInButton(_logInCubit) : SignUpButton(),
               TextButton(
                 style: ButtonStyle(
                   backgroundColor:

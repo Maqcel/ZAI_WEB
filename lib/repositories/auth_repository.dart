@@ -1,14 +1,19 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
+import 'package:zai/config/exceptions/exceptions.dart';
+import 'package:zai/models/user_model/user.dart';
 
 import '../values/constants.dart';
 
 @lazySingleton
 class AuthRepository {
-  Future<void> loginRequest(
-      {required String email, required String password}) async {
+  Future<Either<AppExceptions, http.Response>> logIn({
+    required String email,
+    required String password,
+  }) async {
     try {
       Uri url = Uri.parse(Constants.usersLoginRequest);
       final response = await http.post(
@@ -21,10 +26,15 @@ class AuthRepository {
           },
         ),
       );
-      final responseBody = json.decode(response.body);
+      final Map<String, dynamic> responseBody = json.decode(response.body);
+      print('\n\n');
       print(responseBody);
-    } catch (error) {
-      throw error;
+      print('\n\n');
+      if (responseBody.containsKey('error'))
+        throw new AuthException.logInFailure();
+      return right(response);
+    } on AuthException {
+      return left(const AuthException.logInFailure());
     }
   }
 

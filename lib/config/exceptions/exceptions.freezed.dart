@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthExceptionTearOff {
   const _$AuthExceptionTearOff();
 
-  SignUpFailure signUpFailure() {
-    return const SignUpFailure();
+  SignUpFailure signUpFailure(dynamic status) {
+    return SignUpFailure(
+      status,
+    );
   }
 
   LogInFailure logInFailure() {
@@ -26,6 +28,10 @@ class _$AuthExceptionTearOff {
 
   InvalidEmailFormat invalidEmailFormat() {
     return const InvalidEmailFormat();
+  }
+
+  InvalidPasswordFormat invalidPasswordFormat() {
+    return const InvalidPasswordFormat();
   }
 }
 
@@ -36,16 +42,18 @@ const $AuthException = _$AuthExceptionTearOff();
 mixin _$AuthException {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signUpFailure,
+    required TResult Function(dynamic status) signUpFailure,
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signUpFailure,
+    TResult Function(dynamic status)? signUpFailure,
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +62,8 @@ mixin _$AuthException {
     required TResult Function(SignUpFailure value) signUpFailure,
     required TResult Function(LogInFailure value) logInFailure,
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +71,7 @@ mixin _$AuthException {
     TResult Function(SignUpFailure value)? signUpFailure,
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,6 +99,7 @@ abstract class $SignUpFailureCopyWith<$Res> {
   factory $SignUpFailureCopyWith(
           SignUpFailure value, $Res Function(SignUpFailure) then) =
       _$SignUpFailureCopyWithImpl<$Res>;
+  $Res call({dynamic status});
 }
 
 /// @nodoc
@@ -100,46 +112,69 @@ class _$SignUpFailureCopyWithImpl<$Res>
 
   @override
   SignUpFailure get _value => super._value as SignUpFailure;
+
+  @override
+  $Res call({
+    Object? status = freezed,
+  }) {
+    return _then(SignUpFailure(
+      status == freezed ? _value.status : status,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SignUpFailure implements SignUpFailure {
-  const _$SignUpFailure();
+  const _$SignUpFailure(this.status);
+
+  @override
+  final dynamic status;
 
   @override
   String toString() {
-    return 'AuthException.signUpFailure()';
+    return 'AuthException.signUpFailure(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SignUpFailure);
+    return identical(this, other) ||
+        (other is SignUpFailure &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
+
+  @JsonKey(ignore: true)
+  @override
+  $SignUpFailureCopyWith<SignUpFailure> get copyWith =>
+      _$SignUpFailureCopyWithImpl<SignUpFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signUpFailure,
+    required TResult Function(dynamic status) signUpFailure,
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
   }) {
-    return signUpFailure();
+    return signUpFailure(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signUpFailure,
+    TResult Function(dynamic status)? signUpFailure,
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (signUpFailure != null) {
-      return signUpFailure();
+      return signUpFailure(status);
     }
     return orElse();
   }
@@ -150,6 +185,8 @@ class _$SignUpFailure implements SignUpFailure {
     required TResult Function(SignUpFailure value) signUpFailure,
     required TResult Function(LogInFailure value) logInFailure,
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
   }) {
     return signUpFailure(this);
   }
@@ -160,6 +197,7 @@ class _$SignUpFailure implements SignUpFailure {
     TResult Function(SignUpFailure value)? signUpFailure,
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (signUpFailure != null) {
@@ -170,7 +208,12 @@ class _$SignUpFailure implements SignUpFailure {
 }
 
 abstract class SignUpFailure implements AuthException {
-  const factory SignUpFailure() = _$SignUpFailure;
+  const factory SignUpFailure(dynamic status) = _$SignUpFailure;
+
+  dynamic get status => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SignUpFailureCopyWith<SignUpFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -212,9 +255,10 @@ class _$LogInFailure implements LogInFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signUpFailure,
+    required TResult Function(dynamic status) signUpFailure,
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
   }) {
     return logInFailure();
   }
@@ -222,9 +266,10 @@ class _$LogInFailure implements LogInFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signUpFailure,
+    TResult Function(dynamic status)? signUpFailure,
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (logInFailure != null) {
@@ -239,6 +284,8 @@ class _$LogInFailure implements LogInFailure {
     required TResult Function(SignUpFailure value) signUpFailure,
     required TResult Function(LogInFailure value) logInFailure,
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
   }) {
     return logInFailure(this);
   }
@@ -249,6 +296,7 @@ class _$LogInFailure implements LogInFailure {
     TResult Function(SignUpFailure value)? signUpFailure,
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (logInFailure != null) {
@@ -302,9 +350,10 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signUpFailure,
+    required TResult Function(dynamic status) signUpFailure,
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
   }) {
     return invalidEmailFormat();
   }
@@ -312,9 +361,10 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signUpFailure,
+    TResult Function(dynamic status)? signUpFailure,
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (invalidEmailFormat != null) {
@@ -329,6 +379,8 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     required TResult Function(SignUpFailure value) signUpFailure,
     required TResult Function(LogInFailure value) logInFailure,
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
   }) {
     return invalidEmailFormat(this);
   }
@@ -339,6 +391,7 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     TResult Function(SignUpFailure value)? signUpFailure,
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
     required TResult orElse(),
   }) {
     if (invalidEmailFormat != null) {
@@ -350,6 +403,101 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
 
 abstract class InvalidEmailFormat implements AuthException {
   const factory InvalidEmailFormat() = _$InvalidEmailFormat;
+}
+
+/// @nodoc
+abstract class $InvalidPasswordFormatCopyWith<$Res> {
+  factory $InvalidPasswordFormatCopyWith(InvalidPasswordFormat value,
+          $Res Function(InvalidPasswordFormat) then) =
+      _$InvalidPasswordFormatCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidPasswordFormatCopyWithImpl<$Res>
+    extends _$AuthExceptionCopyWithImpl<$Res>
+    implements $InvalidPasswordFormatCopyWith<$Res> {
+  _$InvalidPasswordFormatCopyWithImpl(
+      InvalidPasswordFormat _value, $Res Function(InvalidPasswordFormat) _then)
+      : super(_value, (v) => _then(v as InvalidPasswordFormat));
+
+  @override
+  InvalidPasswordFormat get _value => super._value as InvalidPasswordFormat;
+}
+
+/// @nodoc
+
+class _$InvalidPasswordFormat implements InvalidPasswordFormat {
+  const _$InvalidPasswordFormat();
+
+  @override
+  String toString() {
+    return 'AuthException.invalidPasswordFormat()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidPasswordFormat);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic status) signUpFailure,
+    required TResult Function() logInFailure,
+    required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
+  }) {
+    return invalidPasswordFormat();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic status)? signUpFailure,
+    TResult Function()? logInFailure,
+    TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
+    required TResult orElse(),
+  }) {
+    if (invalidPasswordFormat != null) {
+      return invalidPasswordFormat();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(LogInFailure value) logInFailure,
+    required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
+  }) {
+    return invalidPasswordFormat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(LogInFailure value)? logInFailure,
+    TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    required TResult orElse(),
+  }) {
+    if (invalidPasswordFormat != null) {
+      return invalidPasswordFormat(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPasswordFormat implements AuthException {
+  const factory InvalidPasswordFormat() = _$InvalidPasswordFormat;
 }
 
 /// @nodoc

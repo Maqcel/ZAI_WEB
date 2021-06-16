@@ -2,15 +2,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'exceptions.freezed.dart';
 
-abstract class AppExceptions {}
+abstract class AppExceptions implements Exception {}
 
 class UnknownException extends AppExceptions {}
 
 @freezed
 class AuthException extends AppExceptions with _$AuthException {
-  const factory AuthException.signUpFailure() = SignUpFailure;
+  const factory AuthException.signUpFailure(status) = SignUpFailure;
   const factory AuthException.logInFailure() = LogInFailure;
   const factory AuthException.invalidEmailFormat() = InvalidEmailFormat;
+  const factory AuthException.invalidPasswordFormat() = InvalidPasswordFormat;
 }
 
 @freezed
@@ -53,9 +54,12 @@ extension ToString on AppExceptions {
   String getString() {
     if (this is AuthException) {
       return (this as AuthException).when(
-        signUpFailure: () => 'Sign-up failure',
-        logInFailure: () => 'Login failure',
-        invalidEmailFormat: () => 'Invalid email Format should contain @',
+        signUpFailure: (status) => 'Sign-up failure status: $status',
+        logInFailure: () => 'Login failure Bad Credentials!',
+        invalidEmailFormat: () =>
+            'Invalid email Format should contain \'@\' and a \'.\'',
+        invalidPasswordFormat: () =>
+            'Invalid password Format should contain: 5 characters',
       );
     } else if (this is DatabaseActionException) {
       return (this as DatabaseActionException).when(
