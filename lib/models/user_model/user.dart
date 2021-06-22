@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zai/models/roles_enum.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -10,7 +9,7 @@ class User with _$User {
     required final String token,
     required final int id,
     required final String name,
-    required final Roles role,
+    required final List<dynamic> roles,
     required final String email,
   }) = _User;
 

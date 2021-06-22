@@ -10,7 +10,11 @@ import '../values/constants.dart';
 
 @lazySingleton
 class AuthRepository {
-  Future<Either<AppExceptions, http.Response>> logIn({
+  late User _user;
+
+  User get currentUser => _user;
+
+  Future<Either<AppExceptions, User>> logIn({
     required String email,
     required String password,
   }) async {
@@ -27,23 +31,20 @@ class AuthRepository {
         ),
       );
       final Map<String, dynamic> responseBody = json.decode(response.body);
-      print('\n\n');
-      print(responseBody);
-      print('\n\n');
       if (responseBody.containsKey('error'))
         throw new AuthException.logInFailure();
-      return right(response);
-    } on AuthException {
-      return left(const AuthException.logInFailure());
+      User user = User.fromJson(responseBody);
+      _user = user;
+      return right(user);
+    } on AuthException catch (error) {
+      return left(error);
     }
   }
 
-  Future<void> signUpRequest({
+  Future<Either<AppExceptions, User>> signUp({
     required String email,
     required String password,
     required String firstName,
-    required String lastName,
-    required String phone,
   }) async {
     try {
       Uri url = Uri.parse(Constants.usersSignUpRequest);
@@ -53,8 +54,6 @@ class AuthRepository {
         body: json.encode(
           {
             "first_name": firstName,
-            "last_name": lastName,
-            "phone": phone,
             "email": email,
             "user_type": 2,
             "password": password,
@@ -62,10 +61,19 @@ class AuthRepository {
           },
         ),
       );
-      final responseBody = json.decode(response.body);
-      print(responseBody);
-    } catch (error) {
-      throw error;
+
+      final Map<String, dynamic> responseBody = json.decode(response.body);
+      if (responseBody.containsKey('error') ||
+          responseBody['code'].toString() != '200')
+        throw new AuthException.signUpFailure(
+            responseBody['message'].toString());
+      final result = await logIn(email: email, password: password);
+      if (result.isRight()) {
+        result.fold((l) => null, (r) => _user = r);
+      }
+      return result;
+    } on AuthException catch (e) {
+      return left(e);
     }
   }
 }

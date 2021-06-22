@@ -24,13 +24,13 @@ class _$UserTearOff {
       {required String token,
       required int id,
       required String name,
-      required Roles role,
+      required List<dynamic> roles,
       required String email}) {
     return _User(
       token: token,
       id: id,
       name: name,
-      role: role,
+      roles: roles,
       email: email,
     );
   }
@@ -48,7 +48,7 @@ mixin _$User {
   String get token => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  Roles get role => throw _privateConstructorUsedError;
+  List<dynamic> get roles => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,7 +60,8 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String token, int id, String name, Roles role, String email});
+  $Res call(
+      {String token, int id, String name, List<dynamic> roles, String email});
 }
 
 /// @nodoc
@@ -76,7 +77,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? token = freezed,
     Object? id = freezed,
     Object? name = freezed,
-    Object? role = freezed,
+    Object? roles = freezed,
     Object? email = freezed,
   }) {
     return _then(_value.copyWith(
@@ -92,10 +93,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      role: role == freezed
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as Roles,
+      roles: roles == freezed
+          ? _value.roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -109,7 +110,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String token, int id, String name, Roles role, String email});
+  $Res call(
+      {String token, int id, String name, List<dynamic> roles, String email});
 }
 
 /// @nodoc
@@ -126,7 +128,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? token = freezed,
     Object? id = freezed,
     Object? name = freezed,
-    Object? role = freezed,
+    Object? roles = freezed,
     Object? email = freezed,
   }) {
     return _then(_User(
@@ -142,10 +144,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      role: role == freezed
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as Roles,
+      roles: roles == freezed
+          ? _value.roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -161,7 +163,7 @@ class _$_User extends _User {
       {required this.token,
       required this.id,
       required this.name,
-      required this.role,
+      required this.roles,
       required this.email})
       : super._();
 
@@ -175,13 +177,13 @@ class _$_User extends _User {
   @override
   final String name;
   @override
-  final Roles role;
+  final List<dynamic> roles;
   @override
   final String email;
 
   @override
   String toString() {
-    return 'User(token: $token, id: $id, name: $name, role: $role, email: $email)';
+    return 'User(token: $token, id: $id, name: $name, roles: $roles, email: $email)';
   }
 
   @override
@@ -194,8 +196,8 @@ class _$_User extends _User {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)) &&
+            (identical(other.roles, roles) ||
+                const DeepCollectionEquality().equals(other.roles, roles)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)));
   }
@@ -206,7 +208,7 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(token) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(role) ^
+      const DeepCollectionEquality().hash(roles) ^
       const DeepCollectionEquality().hash(email);
 
   @JsonKey(ignore: true)
@@ -225,7 +227,7 @@ abstract class _User extends User {
       {required String token,
       required int id,
       required String name,
-      required Roles role,
+      required List<dynamic> roles,
       required String email}) = _$_User;
   _User._() : super._();
 
@@ -238,7 +240,7 @@ abstract class _User extends User {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  Roles get role => throw _privateConstructorUsedError;
+  List<dynamic> get roles => throw _privateConstructorUsedError;
   @override
   String get email => throw _privateConstructorUsedError;
   @override

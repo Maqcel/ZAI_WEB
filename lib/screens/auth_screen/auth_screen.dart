@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zai/config/exceptions/exceptions.dart';
 import 'package:zai/config/injection/injection.dart';
 import 'package:zai/cubits/log_in_cubit/log_in_cubit.dart';
+import 'package:zai/cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:zai/models/email_model/email.dart';
 import 'package:zai/models/password_model/password.dart';
 
@@ -17,7 +18,9 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
   final LogInCubit _logInCubit = LogInCubit(getIt.get());
+  final SignUpCubit _signUpCubit = SignUpCubit(getIt.get());
 
   bool isLogin = true;
 
@@ -68,6 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       return AuthException.invalidEmailFormat().getString();
                     }
                     _logInCubit.emailChange(value);
+                    _signUpCubit.emailChange(value);
                     return null;
                   },
                 ),
@@ -82,17 +86,51 @@ class _AuthScreenState extends State<AuthScreen> {
                   decoration: InputDecoration(
                     labelText: "Password",
                   ),
-                  textInputAction: TextInputAction.done,
+                  textInputAction:
+                      !isLogin ? TextInputAction.next : TextInputAction.done,
                   validator: (value) {
                     if (!Password(value!).isValid()) {
                       return AuthException.invalidPasswordFormat().getString();
                     }
                     _logInCubit.passwordChange(value);
+                    _signUpCubit.passwordChange(value);
                     return null;
                   },
                 ),
               ),
-              isLogin ? LogInButton(_logInCubit) : SignUpButton(),
+              isLogin
+                  ? LogInButton(_logInCubit)
+                  : Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Constants.usedFieldContentPadding),
+                          child: TextFormField(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            controller: firstNameController,
+                            decoration: InputDecoration(
+                              labelText: "Name",
+                            ),
+                            textInputAction: TextInputAction.done,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return AuthException.invalidNameFormat()
+                                    .getString();
+                              } else if (RegExp('[0-9]').hasMatch(value) ||
+                                  value.length < 5) {
+                                return AuthException.invalidNameFormat()
+                                    .getString();
+                              }
+                              _signUpCubit.nameChange(value);
+                              return null;
+                            },
+                          ),
+                        ),
+                        SizedBox(height: Constants.usedDefaultPadding),
+                        SignUpButton(_signUpCubit),
+                      ],
+                    ),
               TextButton(
                 style: ButtonStyle(
                   backgroundColor:

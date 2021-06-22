@@ -33,6 +33,10 @@ class _$AuthExceptionTearOff {
   InvalidPasswordFormat invalidPasswordFormat() {
     return const InvalidPasswordFormat();
   }
+
+  InvalidNameFormat invalidNameFormat() {
+    return const InvalidNameFormat();
+  }
 }
 
 /// @nodoc
@@ -46,6 +50,7 @@ mixin _$AuthException {
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
     required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$AuthException {
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
     TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +70,7 @@ mixin _$AuthException {
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
     required TResult Function(InvalidPasswordFormat value)
         invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +79,7 @@ mixin _$AuthException {
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
     TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,6 +168,7 @@ class _$SignUpFailure implements SignUpFailure {
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
     required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
   }) {
     return signUpFailure(status);
   }
@@ -171,6 +180,7 @@ class _$SignUpFailure implements SignUpFailure {
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
     TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (signUpFailure != null) {
@@ -187,6 +197,7 @@ class _$SignUpFailure implements SignUpFailure {
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
     required TResult Function(InvalidPasswordFormat value)
         invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
   }) {
     return signUpFailure(this);
   }
@@ -198,6 +209,7 @@ class _$SignUpFailure implements SignUpFailure {
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
     TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (signUpFailure != null) {
@@ -259,6 +271,7 @@ class _$LogInFailure implements LogInFailure {
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
     required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
   }) {
     return logInFailure();
   }
@@ -270,6 +283,7 @@ class _$LogInFailure implements LogInFailure {
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
     TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (logInFailure != null) {
@@ -286,6 +300,7 @@ class _$LogInFailure implements LogInFailure {
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
     required TResult Function(InvalidPasswordFormat value)
         invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
   }) {
     return logInFailure(this);
   }
@@ -297,6 +312,7 @@ class _$LogInFailure implements LogInFailure {
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
     TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (logInFailure != null) {
@@ -354,6 +370,7 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
     required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
   }) {
     return invalidEmailFormat();
   }
@@ -365,6 +382,7 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
     TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (invalidEmailFormat != null) {
@@ -381,6 +399,7 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
     required TResult Function(InvalidPasswordFormat value)
         invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
   }) {
     return invalidEmailFormat(this);
   }
@@ -392,6 +411,7 @@ class _$InvalidEmailFormat implements InvalidEmailFormat {
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
     TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (invalidEmailFormat != null) {
@@ -449,6 +469,7 @@ class _$InvalidPasswordFormat implements InvalidPasswordFormat {
     required TResult Function() logInFailure,
     required TResult Function() invalidEmailFormat,
     required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
   }) {
     return invalidPasswordFormat();
   }
@@ -460,6 +481,7 @@ class _$InvalidPasswordFormat implements InvalidPasswordFormat {
     TResult Function()? logInFailure,
     TResult Function()? invalidEmailFormat,
     TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (invalidPasswordFormat != null) {
@@ -476,6 +498,7 @@ class _$InvalidPasswordFormat implements InvalidPasswordFormat {
     required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
     required TResult Function(InvalidPasswordFormat value)
         invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
   }) {
     return invalidPasswordFormat(this);
   }
@@ -487,6 +510,7 @@ class _$InvalidPasswordFormat implements InvalidPasswordFormat {
     TResult Function(LogInFailure value)? logInFailure,
     TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
     TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
     required TResult orElse(),
   }) {
     if (invalidPasswordFormat != null) {
@@ -498,6 +522,105 @@ class _$InvalidPasswordFormat implements InvalidPasswordFormat {
 
 abstract class InvalidPasswordFormat implements AuthException {
   const factory InvalidPasswordFormat() = _$InvalidPasswordFormat;
+}
+
+/// @nodoc
+abstract class $InvalidNameFormatCopyWith<$Res> {
+  factory $InvalidNameFormatCopyWith(
+          InvalidNameFormat value, $Res Function(InvalidNameFormat) then) =
+      _$InvalidNameFormatCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidNameFormatCopyWithImpl<$Res>
+    extends _$AuthExceptionCopyWithImpl<$Res>
+    implements $InvalidNameFormatCopyWith<$Res> {
+  _$InvalidNameFormatCopyWithImpl(
+      InvalidNameFormat _value, $Res Function(InvalidNameFormat) _then)
+      : super(_value, (v) => _then(v as InvalidNameFormat));
+
+  @override
+  InvalidNameFormat get _value => super._value as InvalidNameFormat;
+}
+
+/// @nodoc
+
+class _$InvalidNameFormat implements InvalidNameFormat {
+  const _$InvalidNameFormat();
+
+  @override
+  String toString() {
+    return 'AuthException.invalidNameFormat()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidNameFormat);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic status) signUpFailure,
+    required TResult Function() logInFailure,
+    required TResult Function() invalidEmailFormat,
+    required TResult Function() invalidPasswordFormat,
+    required TResult Function() invalidNameFormat,
+  }) {
+    return invalidNameFormat();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic status)? signUpFailure,
+    TResult Function()? logInFailure,
+    TResult Function()? invalidEmailFormat,
+    TResult Function()? invalidPasswordFormat,
+    TResult Function()? invalidNameFormat,
+    required TResult orElse(),
+  }) {
+    if (invalidNameFormat != null) {
+      return invalidNameFormat();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(LogInFailure value) logInFailure,
+    required TResult Function(InvalidEmailFormat value) invalidEmailFormat,
+    required TResult Function(InvalidPasswordFormat value)
+        invalidPasswordFormat,
+    required TResult Function(InvalidNameFormat value) invalidNameFormat,
+  }) {
+    return invalidNameFormat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(LogInFailure value)? logInFailure,
+    TResult Function(InvalidEmailFormat value)? invalidEmailFormat,
+    TResult Function(InvalidPasswordFormat value)? invalidPasswordFormat,
+    TResult Function(InvalidNameFormat value)? invalidNameFormat,
+    required TResult orElse(),
+  }) {
+    if (invalidNameFormat != null) {
+      return invalidNameFormat(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidNameFormat implements AuthException {
+  const factory InvalidNameFormat() = _$InvalidNameFormat;
 }
 
 /// @nodoc

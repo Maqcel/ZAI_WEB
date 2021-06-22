@@ -12,6 +12,7 @@ class AuthException extends AppExceptions with _$AuthException {
   const factory AuthException.logInFailure() = LogInFailure;
   const factory AuthException.invalidEmailFormat() = InvalidEmailFormat;
   const factory AuthException.invalidPasswordFormat() = InvalidPasswordFormat;
+  const factory AuthException.invalidNameFormat() = InvalidNameFormat;
 }
 
 @freezed
@@ -60,6 +61,8 @@ extension ToString on AppExceptions {
             'Invalid email Format should contain \'@\' and a \'.\'',
         invalidPasswordFormat: () =>
             'Invalid password Format should contain: 5 characters',
+        invalidNameFormat: () =>
+            'Invalid name Format should contain: 5 characters and no digits',
       );
     } else if (this is DatabaseActionException) {
       return (this as DatabaseActionException).when(
