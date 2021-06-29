@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zai/models/category_model/category.dart';
 import 'package:zai/models/product_model/product.dart';
 import 'package:zai/repositories/products_repository.dart';
 
@@ -13,14 +13,14 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   void goBackToGridView() => emit(
         state.copyWith(
-          isProductSelected: false,
+          isWidgetSelected: false,
         ),
       );
 
-  void setProductScreenView(Product product) => emit(
+  void setScreenView(Widget child) => emit(
         state.copyWith(
-          isProductSelected: true,
-          product: product,
+          isWidgetSelected: true,
+          child: child,
         ),
       );
 

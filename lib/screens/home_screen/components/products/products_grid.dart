@@ -33,11 +33,8 @@ class _ProductsGridState extends State<ProductsGrid> {
       child: BlocBuilder<ProductsCubit, ProductsState>(
         bloc: cubit,
         builder: (context, state) {
-          if (state.isProductSelected) {
-            return SelectedProduct(
-              cubit: cubit,
-              product: state.product,
-            );
+          if (state.isWidgetSelected) {
+            return state.child;
           }
           return state.isLoading
               ? Center(
@@ -56,8 +53,11 @@ class _ProductsGridState extends State<ProductsGrid> {
                       product: cubit.getCurrentProducts().elementAt(index),
                       index: index,
                       belowElevationColor: Constants.usedPrimaryColor,
-                      onClick: () => cubit.setProductScreenView(
-                        cubit.getCurrentProducts().elementAt(index),
+                      onClick: () => cubit.setScreenView(
+                        SelectedProduct(
+                          cubit: cubit,
+                          product: cubit.getCurrentProducts().elementAt(index),
+                        ),
                       ),
                     );
                   },

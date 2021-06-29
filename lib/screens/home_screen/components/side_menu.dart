@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../values/constants.dart';
-import 'profile_button.dart';
+import 'profile/profile_button.dart';
 
 class SideMenu extends StatelessWidget {
   @override

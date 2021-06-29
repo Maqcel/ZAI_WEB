@@ -17,13 +17,13 @@ class _$ProductsStateTearOff {
   const _$ProductsStateTearOff();
 
   _ProductsState call(
-      {required bool isProductSelected,
+      {required bool isWidgetSelected,
       required bool isLoading,
-      required Product product}) {
+      required Widget child}) {
     return _ProductsState(
-      isProductSelected: isProductSelected,
+      isWidgetSelected: isWidgetSelected,
       isLoading: isLoading,
-      product: product,
+      child: child,
     );
   }
 }
@@ -33,9 +33,10 @@ const $ProductsState = _$ProductsStateTearOff();
 
 /// @nodoc
 mixin _$ProductsState {
-  bool get isProductSelected => throw _privateConstructorUsedError;
-  bool get isLoading => throw _privateConstructorUsedError;
-  Product get product => throw _privateConstructorUsedError;
+  bool get isWidgetSelected => throw _privateConstructorUsedError;
+  bool get isLoading =>
+      throw _privateConstructorUsedError; // required Product product,
+  Widget get child => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductsStateCopyWith<ProductsState> get copyWith =>
@@ -47,9 +48,7 @@ abstract class $ProductsStateCopyWith<$Res> {
   factory $ProductsStateCopyWith(
           ProductsState value, $Res Function(ProductsState) then) =
       _$ProductsStateCopyWithImpl<$Res>;
-  $Res call({bool isProductSelected, bool isLoading, Product product});
-
-  $ProductCopyWith<$Res> get product;
+  $Res call({bool isWidgetSelected, bool isLoading, Widget child});
 }
 
 /// @nodoc
@@ -63,31 +62,24 @@ class _$ProductsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isProductSelected = freezed,
+    Object? isWidgetSelected = freezed,
     Object? isLoading = freezed,
-    Object? product = freezed,
+    Object? child = freezed,
   }) {
     return _then(_value.copyWith(
-      isProductSelected: isProductSelected == freezed
-          ? _value.isProductSelected
-          : isProductSelected // ignore: cast_nullable_to_non_nullable
+      isWidgetSelected: isWidgetSelected == freezed
+          ? _value.isWidgetSelected
+          : isWidgetSelected // ignore: cast_nullable_to_non_nullable
               as bool,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      product: product == freezed
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product,
+      child: child == freezed
+          ? _value.child
+          : child // ignore: cast_nullable_to_non_nullable
+              as Widget,
     ));
-  }
-
-  @override
-  $ProductCopyWith<$Res> get product {
-    return $ProductCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
   }
 }
 
@@ -98,10 +90,7 @@ abstract class _$ProductsStateCopyWith<$Res>
           _ProductsState value, $Res Function(_ProductsState) then) =
       __$ProductsStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isProductSelected, bool isLoading, Product product});
-
-  @override
-  $ProductCopyWith<$Res> get product;
+  $Res call({bool isWidgetSelected, bool isLoading, Widget child});
 }
 
 /// @nodoc
@@ -117,23 +106,23 @@ class __$ProductsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isProductSelected = freezed,
+    Object? isWidgetSelected = freezed,
     Object? isLoading = freezed,
-    Object? product = freezed,
+    Object? child = freezed,
   }) {
     return _then(_ProductsState(
-      isProductSelected: isProductSelected == freezed
-          ? _value.isProductSelected
-          : isProductSelected // ignore: cast_nullable_to_non_nullable
+      isWidgetSelected: isWidgetSelected == freezed
+          ? _value.isWidgetSelected
+          : isWidgetSelected // ignore: cast_nullable_to_non_nullable
               as bool,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      product: product == freezed
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Product,
+      child: child == freezed
+          ? _value.child
+          : child // ignore: cast_nullable_to_non_nullable
+              as Widget,
     ));
   }
 }
@@ -142,43 +131,43 @@ class __$ProductsStateCopyWithImpl<$Res>
 
 class _$_ProductsState extends _ProductsState {
   const _$_ProductsState(
-      {required this.isProductSelected,
+      {required this.isWidgetSelected,
       required this.isLoading,
-      required this.product})
+      required this.child})
       : super._();
 
   @override
-  final bool isProductSelected;
+  final bool isWidgetSelected;
   @override
   final bool isLoading;
-  @override
-  final Product product;
+  @override // required Product product,
+  final Widget child;
 
   @override
   String toString() {
-    return 'ProductsState(isProductSelected: $isProductSelected, isLoading: $isLoading, product: $product)';
+    return 'ProductsState(isWidgetSelected: $isWidgetSelected, isLoading: $isLoading, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ProductsState &&
-            (identical(other.isProductSelected, isProductSelected) ||
+            (identical(other.isWidgetSelected, isWidgetSelected) ||
                 const DeepCollectionEquality()
-                    .equals(other.isProductSelected, isProductSelected)) &&
+                    .equals(other.isWidgetSelected, isWidgetSelected)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
-            (identical(other.product, product) ||
-                const DeepCollectionEquality().equals(other.product, product)));
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isProductSelected) ^
+      const DeepCollectionEquality().hash(isWidgetSelected) ^
       const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(product);
+      const DeepCollectionEquality().hash(child);
 
   @JsonKey(ignore: true)
   @override
@@ -188,17 +177,17 @@ class _$_ProductsState extends _ProductsState {
 
 abstract class _ProductsState extends ProductsState {
   const factory _ProductsState(
-      {required bool isProductSelected,
+      {required bool isWidgetSelected,
       required bool isLoading,
-      required Product product}) = _$_ProductsState;
+      required Widget child}) = _$_ProductsState;
   const _ProductsState._() : super._();
 
   @override
-  bool get isProductSelected => throw _privateConstructorUsedError;
+  bool get isWidgetSelected => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
-  @override
-  Product get product => throw _privateConstructorUsedError;
+  @override // required Product product,
+  Widget get child => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductsStateCopyWith<_ProductsState> get copyWith =>
