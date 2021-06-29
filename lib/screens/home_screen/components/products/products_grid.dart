@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zai/config/injection/injection.dart';
 import 'package:zai/cubits/products_cubit/products_cubit.dart';
 import 'package:zai/screens/home_screen/components/products/grid_view_item.dart';
 import 'package:zai/values/constants.dart';
 import 'selected_product.dart';
 
 class ProductsGrid extends StatefulWidget {
+  final ProductsCubit cubit;
+
+  const ProductsGrid({required this.cubit});
   @override
   _ProductsGridState createState() => _ProductsGridState();
 }
 
 class _ProductsGridState extends State<ProductsGrid> {
-  final ProductsCubit cubit = ProductsCubit(getIt.get());
-
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback(
       (timeStamp) async {
-        await cubit.fetchAllProducts();
+        await widget.cubit.fetchAllProducts();
       },
     );
     super.initState();
@@ -31,7 +31,7 @@ class _ProductsGridState extends State<ProductsGrid> {
       width: double.infinity,
       color: Constants.usedPrimaryColor,
       child: BlocBuilder<ProductsCubit, ProductsState>(
-        bloc: cubit,
+        bloc: widget.cubit,
         builder: (context, state) {
           if (state.isWidgetSelected) {
             return state.child;
@@ -41,7 +41,7 @@ class _ProductsGridState extends State<ProductsGrid> {
                   child: CircularProgressIndicator(),
                 )
               : GridView.builder(
-                  itemCount: cubit.getCurrentProducts().length,
+                  itemCount: widget.cubit.getCurrentProducts().length,
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent:
                           MediaQuery.of(context).size.width * 0.3,
@@ -50,13 +50,16 @@ class _ProductsGridState extends State<ProductsGrid> {
                       mainAxisSpacing: Constants.usedDefaultPadding),
                   itemBuilder: (context, index) {
                     return GridViewItem(
-                      product: cubit.getCurrentProducts().elementAt(index),
+                      product:
+                          widget.cubit.getCurrentProducts().elementAt(index),
                       index: index,
                       belowElevationColor: Constants.usedPrimaryColor,
-                      onClick: () => cubit.setScreenView(
+                      onClick: () => widget.cubit.setScreenView(
                         SelectedProduct(
-                          cubit: cubit,
-                          product: cubit.getCurrentProducts().elementAt(index),
+                          cubit: widget.cubit,
+                          product: widget.cubit
+                              .getCurrentProducts()
+                              .elementAt(index),
                         ),
                       ),
                     );

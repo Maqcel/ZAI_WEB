@@ -103,4 +103,9 @@ class Constants {
 
   static const String beforeChangeToUrl =
       'https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg';
+
+  static const String usedAdminPicture =
+      'https://thumbs.dreamstime.com/b/ikona-logowania-administratora-na-notebooku-—-wektor-giełdowy-166205404.jpg';
+  static const String usedUserPicture =
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png';
 }

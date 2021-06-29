@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:zai/cubits/products_cubit/products_cubit.dart';
 
 import '../../../values/constants.dart';
 import 'profile/profile_button.dart';
 
 class SideMenu extends StatelessWidget {
+  final ProductsCubit cubit;
+
+  const SideMenu({required this.cubit});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +38,9 @@ class SideMenu extends StatelessWidget {
             child: SafeArea(
               child: Column(
                 children: [
-                  ProfileButton(),
+                  ProfileButton(
+                    cubit: cubit,
+                  ),
                 ],
               ),
             ),
