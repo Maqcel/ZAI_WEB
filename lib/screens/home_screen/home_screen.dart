@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zai/screens/home_screen/components/products/products_grid.dart';
+import 'package:zai/values/constants.dart';
 
 import 'components/side_menu.dart';
 
@@ -8,10 +10,16 @@ class HomeScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: SideMenu(
-            isAuthenticated: true,
+          flex: 2,
+          child: SideMenu(),
+        ),
+        Expanded(
+          flex: 7,
+          child: Scaffold(
+            backgroundColor: Constants.usedPrimaryColor,
+            body: ProductsGrid(),
           ),
-        )
+        ),
       ],
     );
   }

@@ -8,9 +8,10 @@ part 'product.g.dart';
 class Product with _$Product {
   factory Product({
     required final int id,
-    required final double price,
+    required final String name,
+    required final String price,
     required final String description,
-    required final String imageUrl,
+    required final String image,
     required final Category category,
   }) = _Product;
 

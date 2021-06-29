@@ -22,15 +22,17 @@ class _$ProductTearOff {
 
   _Product call(
       {required int id,
-      required double price,
+      required String name,
+      required String price,
       required String description,
-      required String imageUrl,
+      required String image,
       required Category category}) {
     return _Product(
       id: id,
+      name: name,
       price: price,
       description: description,
-      imageUrl: imageUrl,
+      image: image,
       category: category,
     );
   }
@@ -46,9 +48,10 @@ const $Product = _$ProductTearOff();
 /// @nodoc
 mixin _$Product {
   int get id => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,9 +65,10 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      double price,
+      String name,
+      String price,
       String description,
-      String imageUrl,
+      String image,
       Category category});
 
   $CategoryCopyWith<$Res> get category;
@@ -81,9 +85,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? price = freezed,
     Object? description = freezed,
-    Object? imageUrl = freezed,
+    Object? image = freezed,
     Object? category = freezed,
   }) {
     return _then(_value.copyWith(
@@ -91,17 +96,21 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
           ? _value.category
@@ -125,9 +134,10 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      double price,
+      String name,
+      String price,
       String description,
-      String imageUrl,
+      String image,
       Category category});
 
   @override
@@ -146,9 +156,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? price = freezed,
     Object? description = freezed,
-    Object? imageUrl = freezed,
+    Object? image = freezed,
     Object? category = freezed,
   }) {
     return _then(_Product(
@@ -156,17 +167,21 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
           ? _value.category
@@ -181,9 +196,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 class _$_Product implements _Product {
   _$_Product(
       {required this.id,
+      required this.name,
       required this.price,
       required this.description,
-      required this.imageUrl,
+      required this.image,
       required this.category});
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
@@ -192,17 +208,19 @@ class _$_Product implements _Product {
   @override
   final int id;
   @override
-  final double price;
+  final String name;
+  @override
+  final String price;
   @override
   final String description;
   @override
-  final String imageUrl;
+  final String image;
   @override
   final Category category;
 
   @override
   String toString() {
-    return 'Product(id: $id, price: $price, description: $description, imageUrl: $imageUrl, category: $category)';
+    return 'Product(id: $id, name: $name, price: $price, description: $description, image: $image, category: $category)';
   }
 
   @override
@@ -211,14 +229,15 @@ class _$_Product implements _Product {
         (other is _Product &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.price, price) ||
                 const DeepCollectionEquality().equals(other.price, price)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
                     .equals(other.category, category)));
@@ -228,9 +247,10 @@ class _$_Product implements _Product {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(imageUrl) ^
+      const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(category);
 
   @JsonKey(ignore: true)
@@ -247,9 +267,10 @@ class _$_Product implements _Product {
 abstract class _Product implements Product {
   factory _Product(
       {required int id,
-      required double price,
+      required String name,
+      required String price,
       required String description,
-      required String imageUrl,
+      required String image,
       required Category category}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
@@ -257,11 +278,13 @@ abstract class _Product implements Product {
   @override
   int get id => throw _privateConstructorUsedError;
   @override
-  double get price => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @override
+  String get price => throw _privateConstructorUsedError;
   @override
   String get description => throw _privateConstructorUsedError;
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   Category get category => throw _privateConstructorUsedError;
   @override

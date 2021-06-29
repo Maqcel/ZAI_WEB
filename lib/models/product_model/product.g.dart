@@ -9,9 +9,10 @@ part of 'product.dart';
 _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
   return _$_Product(
     id: json['id'] as int,
-    price: (json['price'] as num).toDouble(),
+    name: json['name'] as String,
+    price: json['price'] as String,
     description: json['description'] as String,
-    imageUrl: json['imageUrl'] as String,
+    image: json['image'] as String,
     category: Category.fromJson(json['category'] as Map<String, dynamic>),
   );
 }
@@ -19,8 +20,9 @@ _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_ProductToJson(_$_Product instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
       'price': instance.price,
       'description': instance.description,
-      'imageUrl': instance.imageUrl,
+      'image': instance.image,
       'category': instance.category,
     };

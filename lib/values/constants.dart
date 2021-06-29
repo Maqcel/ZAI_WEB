@@ -83,4 +83,24 @@ class Constants {
   //* Header text
   static const double usedHeaderFontSize = 30.0;
   static const String usedHeaderFontName = 'Bebas';
+
+  //? Grid View Items
+  //* Item dimensions
+  static const double usedGridItemBorderRadius = 15.0;
+  static const double usedGridItemWidth = 200.0;
+  static const double usedGridItemHeight = 200.0;
+  //* Axis Extent breakpoints
+  static const double usedFourGridRows = 1500.0;
+  static const double usedThreeGridRows = 1200.0;
+  static const double usedTwoGridRows = 800.0;
+  //* Item text
+  static const double usedGridTextFontSize = 22.0;
+  static const double usedGridTextOpacityBackground = 0.7;
+  //* Product view
+  static const double usedSelectedProductViewImageDim = 300.0;
+  static const double usedSelectedProductViewSizedBoxWidth = 50.0;
+  static const double usedSelectedProductViewPadding = 16.0;
+
+  static const String beforeChangeToUrl =
+      'https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg';
 }

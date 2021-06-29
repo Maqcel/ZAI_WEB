@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../values/constants.dart';
-import 'auth_button.dart';
 import 'profile_button.dart';
 
 class SideMenu extends StatelessWidget {
-  final bool isAuthenticated;
-  const SideMenu({
-    required this.isAuthenticated,
-  });
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Constants.usedPrimaryColor,
       body: Container(
         width: double.infinity,
         color: Colors.transparent,
@@ -37,28 +32,10 @@ class SideMenu extends StatelessWidget {
               ],
             ),
             child: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: Constants.usedDefaultPadding,
-                    ),
-                    isAuthenticated
-                        ? ProfileButton()
-                        : Column(
-                            children: [
-                              AuthButton(isLogin: true, label: 'Log in'),
-                              SizedBox(
-                                height: Constants.usedDefaultPadding,
-                              ),
-                              AuthButton(isLogin: false, label: 'Sign up'),
-                            ],
-                          ),
-                    SizedBox(
-                      height: Constants.usedBigPadding,
-                    ),
-                  ],
-                ),
+              child: Column(
+                children: [
+                  ProfileButton(),
+                ],
               ),
             ),
           ),
