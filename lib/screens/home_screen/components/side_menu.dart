@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zai/config/injection/injection.dart';
 import 'package:zai/cubits/category_cubit/category_cubit.dart';
 import 'package:zai/cubits/products_cubit/products_cubit.dart';
+import 'package:zai/screens/auth_screen/auth_screen.dart';
 
 import '../../../values/constants.dart';
 import 'profile/profile_button.dart';
@@ -62,15 +63,16 @@ class _SideMenuState extends State<SideMenu> {
               builder: (context, state) {
                 return SafeArea(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ProfileButton(
-                        productCubit: widget.cubit,
-                        categoryCubit: categoryCubit,
+                      Flexible(
+                        child: ProfileButton(
+                          productCubit: widget.cubit,
+                          categoryCubit: categoryCubit,
+                        ),
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.2),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: ListView.builder(
                           itemCount: state.categories.length + 1,
                           itemBuilder: (context, index) {
@@ -115,6 +117,19 @@ class _SideMenuState extends State<SideMenu> {
                           },
                         ),
                       ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white60,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => AuthScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Log out'),
+                      )
                     ],
                   ),
                 );
