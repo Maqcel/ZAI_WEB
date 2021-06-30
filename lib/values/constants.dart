@@ -29,7 +29,7 @@ class Constants {
   static const String deleteCategoryRequest =
       'http://localhost:8080/api/category/delete'; //? + categoryId
   static const String deleteProductRequest =
-      'http://localhost:8080/api/product/delete/'; //? + productId
+      'http://localhost:8080/api/product/delete'; //? + productId
   //* IMAGE_URL START
   static const String imageUrlPrefix = 'http://localhost:8080/product-photos/';
 

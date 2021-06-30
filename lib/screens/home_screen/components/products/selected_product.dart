@@ -70,13 +70,23 @@ class SelectedProduct extends StatelessWidget {
                             onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
+                                  duration: Duration(seconds: 2),
                                   behavior: SnackBarBehavior.floating,
                                   content:
                                       Text('If u want to delete long press!'),
                                 ),
                               );
                             },
-                            onLongPress: () {},
+                            onLongPress: () {
+                              cubit.deleteProduct(product);
+                              cubit.goBackToGridView();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text('Product was deleted!'),
+                                ),
+                              );
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

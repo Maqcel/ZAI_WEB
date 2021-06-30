@@ -40,4 +40,10 @@ class ProductsCubit extends Cubit<ProductsState> {
     await _productsRepository.getProductsFromCategory(category);
     emit(state.copyWith(isLoading: false));
   }
+
+  Future<void> deleteProduct(Product product) async {
+    emit(state.copyWith(isLoading: true));
+    await _productsRepository.deleteSelectedProduct(product);
+    emit(state.copyWith(isLoading: false));
+  }
 }

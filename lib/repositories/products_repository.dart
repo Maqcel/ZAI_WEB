@@ -72,4 +72,21 @@ class ProductsRepository {
       _products = [];
     }
   }
+
+  Future<void> deleteSelectedProduct(Product product) async {
+    try {
+      String token = 'Bearer ${_authRepository.currentUser.token}';
+      Uri url = Uri.parse('${Constants.deleteProductRequest}/${product.id}');
+      Map<String, String> header = {};
+      header.addAll(Constants.header);
+      header['Authorization'] = token;
+      await http.delete(
+        url,
+        headers: header,
+      );
+      _products.removeWhere((element) => element.id == product.id);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
