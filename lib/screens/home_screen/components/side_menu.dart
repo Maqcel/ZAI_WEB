@@ -84,6 +84,7 @@ class _SideMenuState extends State<SideMenu> {
                                   onTap: () {
                                     setState(() {
                                       selectedIndex = index;
+                                      widget.cubit.fetchAllProducts();
                                     });
                                   },
                                 ),
@@ -101,6 +102,9 @@ class _SideMenuState extends State<SideMenu> {
                                 onTap: () {
                                   setState(() {
                                     selectedIndex = index;
+                                    widget.cubit.fetchProductsFromCategory(
+                                      state.categories[index],
+                                    );
                                   });
                                 },
                               ),
