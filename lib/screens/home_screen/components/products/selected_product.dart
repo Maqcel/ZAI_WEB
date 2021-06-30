@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:zai/config/injection/injection.dart';
 import 'package:zai/cubits/products_cubit/products_cubit.dart';
 import 'package:zai/models/product_model/product.dart';
+import 'package:zai/repositories/auth_repository.dart';
 import 'package:zai/values/constants.dart';
 
 class SelectedProduct extends StatelessWidget {
   final ProductsCubit cubit;
   final Product product;
+  final AuthRepository authRepository = getIt.get();
 
   SelectedProduct({
     required this.product,
@@ -57,6 +60,32 @@ class SelectedProduct extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Text('${product.price.toString()}\$'),
+                    authRepository.currentUser.roles[0]
+                            .toString()
+                            .endsWith('ADMIN')
+                        ? ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red[600],
+                            ),
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  content:
+                                      Text('If u want to delete long press!'),
+                                ),
+                              );
+                            },
+                            onLongPress: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('Delete'),
+                                Icon(Icons.delete_outline),
+                              ],
+                            ),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

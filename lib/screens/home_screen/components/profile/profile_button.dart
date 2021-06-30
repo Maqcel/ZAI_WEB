@@ -18,19 +18,21 @@ class ProfileButton extends StatelessWidget {
     return Container(
       height: Constants.usedProfileButtonSize,
       width: Constants.usedProfileButtonSize,
-      child: IconButton(
-        onPressed: () {
-          cubit.setScreenView(
-            SelectedProfile(
-              cubit: cubit,
-              user: authRepository.currentUser,
-            ),
-          );
-        },
-        icon: Icon(
-          Icons.person_outline_rounded,
-          size: Constants.usedProfileButtonIconSize,
-          color: Constants.usedTextColor,
+      child: Material(
+        child: IconButton(
+          onPressed: () {
+            cubit.setScreenView(
+              SelectedProfile(
+                cubit: cubit,
+                user: authRepository.currentUser,
+              ),
+            );
+          },
+          icon: Icon(
+            Icons.person_outline_rounded,
+            size: Constants.usedProfileButtonIconSize,
+            color: Constants.usedTextColor,
+          ),
         ),
       ),
     ).addNeumorphism();

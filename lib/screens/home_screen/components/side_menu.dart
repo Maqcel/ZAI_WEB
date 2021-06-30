@@ -30,9 +30,11 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Constants.usedPrimaryColor,
-      body: Container(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Constants.usedPrimaryColor,
+      child: Container(
         width: double.infinity,
         color: Colors.transparent,
         child: Padding(
