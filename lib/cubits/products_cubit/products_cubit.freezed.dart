@@ -34,8 +34,7 @@ const $ProductsState = _$ProductsStateTearOff();
 /// @nodoc
 mixin _$ProductsState {
   bool get isWidgetSelected => throw _privateConstructorUsedError;
-  bool get isLoading =>
-      throw _privateConstructorUsedError; // required Product product,
+  bool get isLoading => throw _privateConstructorUsedError;
   Widget get child => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -140,7 +139,7 @@ class _$_ProductsState extends _ProductsState {
   final bool isWidgetSelected;
   @override
   final bool isLoading;
-  @override // required Product product,
+  @override
   final Widget child;
 
   @override
@@ -186,7 +185,7 @@ abstract class _ProductsState extends ProductsState {
   bool get isWidgetSelected => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
-  @override // required Product product,
+  @override
   Widget get child => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

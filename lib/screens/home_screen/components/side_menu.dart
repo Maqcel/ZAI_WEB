@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zai/config/injection/injection.dart';
+import 'package:zai/cubits/category_cubit/category_cubit.dart';
 import 'package:zai/cubits/products_cubit/products_cubit.dart';
 
 import '../../../values/constants.dart';
 import 'profile/profile_button.dart';
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
   final ProductsCubit cubit;
 
   const SideMenu({required this.cubit});
+
+  @override
+  _SideMenuState createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
+  late final CategoryCubit categoryCubit;
+  int selectedIndex = -1;
+
+  @override
+  void initState() {
+    categoryCubit = CategoryCubit(
+      categoryRepository: getIt.get(),
+    )..fetchCategories();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,14 +55,63 @@ class SideMenu extends StatelessWidget {
                 ),
               ],
             ),
-            child: SafeArea(
-              child: Column(
-                children: [
-                  ProfileButton(
-                    cubit: cubit,
+            child: BlocBuilder<CategoryCubit, CategoryState>(
+              bloc: categoryCubit,
+              builder: (context, state) {
+                return SafeArea(
+                  child: Column(
+                    children: [
+                      ProfileButton(
+                        cubit: widget.cubit,
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2),
+                      Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                          itemCount: state.categories.length + 1,
+                          itemBuilder: (context, index) {
+                            if (index >= state.categories.length) {
+                              return Card(
+                                color: selectedIndex == index
+                                    ? Constants.usedPrimaryColor
+                                    : Colors.white,
+                                child: ListTile(
+                                  title: Text(
+                                    'All Products',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
+                                    });
+                                  },
+                                ),
+                              );
+                            }
+                            return Card(
+                              color: selectedIndex == index
+                                  ? Constants.usedPrimaryColor
+                                  : Colors.white,
+                              child: ListTile(
+                                title: Text(
+                                  state.categories[index].name,
+                                  textAlign: TextAlign.center,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ),

@@ -49,7 +49,7 @@ class GridViewItem extends StatelessWidget {
                     height: double.infinity,
                     child: FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
-                      image: Constants.beforeChangeToUrl,
+                      image: product.image,
                       fit: BoxFit.cover,
                     ),
                   ),

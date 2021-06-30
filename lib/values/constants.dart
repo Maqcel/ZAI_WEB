@@ -101,9 +101,6 @@ class Constants {
   static const double usedSelectedProductViewSizedBoxWidth = 50.0;
   static const double usedSelectedProductViewPadding = 16.0;
 
-  static const String beforeChangeToUrl =
-      'https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg';
-
   static const String usedAdminPicture =
       'https://thumbs.dreamstime.com/b/ikona-logowania-administratora-na-notebooku-—-wektor-giełdowy-166205404.jpg';
   static const String usedUserPicture =

@@ -11,11 +11,14 @@ class ProductsCubit extends Cubit<ProductsState> {
   final ProductsRepository _productsRepository;
   ProductsCubit(this._productsRepository) : super(ProductsState.init());
 
-  void goBackToGridView() => emit(
-        state.copyWith(
-          isWidgetSelected: false,
-        ),
-      );
+  void goBackToGridView() async {
+    await _productsRepository.getAllProducts();
+    emit(
+      state.copyWith(
+        isWidgetSelected: false,
+      ),
+    );
+  }
 
   void setScreenView(Widget child) => emit(
         state.copyWith(

@@ -30,7 +30,7 @@ class SelectedProduct extends StatelessWidget {
                   width: Constants.usedSelectedProductViewImageDim,
                   height: Constants.usedSelectedProductViewImageDim,
                   placeholder: kTransparentImage,
-                  image: Constants.beforeChangeToUrl,
+                  image: product.image,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -52,7 +52,10 @@ class SelectedProduct extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(product.name),
-                    Text(product.description),
+                    Text(
+                      product.description,
+                      textAlign: TextAlign.center,
+                    ),
                     Text('${product.price.toString()}\$'),
                   ],
                 ),
