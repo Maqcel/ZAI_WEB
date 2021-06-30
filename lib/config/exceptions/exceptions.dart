@@ -47,6 +47,11 @@ class DatabaseActionException extends AppExceptions
 }
 
 @freezed
+class ProductForm extends AppExceptions with _$ProductForm {
+  const factory ProductForm.valueIsEmpty() = EmptyValueFailure;
+}
+
+@freezed
 class ValueIsValid extends AppExceptions with _$ValueIsValid {
   const factory ValueIsValid.valueIsValid() = ValidValue;
 }
@@ -82,6 +87,10 @@ extension ToString on AppExceptions {
     } else if (this is ValueIsValid) {
       return (this as ValueIsValid).when(
         valueIsValid: () => 'Valid',
+      );
+    } else if (this is ProductForm) {
+      return (this as ProductForm).when(
+        valueIsEmpty: () => 'Field is required',
       );
     } else {
       return 'Something went wrong';

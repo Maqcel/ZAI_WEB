@@ -64,7 +64,8 @@ class _SideMenuState extends State<SideMenu> {
                   child: Column(
                     children: [
                       ProfileButton(
-                        cubit: widget.cubit,
+                        productCubit: widget.cubit,
+                        categoryCubit: categoryCubit,
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.2),

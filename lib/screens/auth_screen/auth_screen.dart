@@ -57,7 +57,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 height: Constants.usedDefaultPadding,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Constants.usedDefaultPadding),
                 child: TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: emailController,

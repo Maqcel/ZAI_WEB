@@ -89,4 +89,30 @@ class ProductsRepository {
       print(e);
     }
   }
+
+  Future<void> addProduct(Product product) async {
+    try {
+      String token = 'Bearer ${_authRepository.currentUser.token}';
+      Uri url = Uri.parse(Constants.productCreateRequest);
+      Map<String, String> header = {};
+      header.addAll(Constants.header);
+      header['Authorization'] = token;
+      await http.post(
+        url,
+        headers: header,
+        body: json.encode(
+          {
+            "name": product.name,
+            "price": product.price,
+            "description": product.description,
+            "category_id": product.category.id.toString(),
+            "image": product.image,
+          },
+        ),
+      );
+      _products.add(product);
+    } catch (e) {
+      print(e);
+    }
+  }
 }

@@ -105,4 +105,6 @@ class Constants {
       'https://thumbs.dreamstime.com/b/ikona-logowania-administratora-na-notebooku-—-wektor-giełdowy-166205404.jpg';
   static const String usedUserPicture =
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png';
+  static const String usedNewProduct =
+      'https://cdn2.iconfinder.com/data/icons/content-design-production-2/66/120-512.png';
 }

@@ -2177,6 +2177,142 @@ abstract class CategoryDeletionFailure implements DatabaseActionException {
 }
 
 /// @nodoc
+class _$ProductFormTearOff {
+  const _$ProductFormTearOff();
+
+  EmptyValueFailure valueIsEmpty() {
+    return const EmptyValueFailure();
+  }
+}
+
+/// @nodoc
+const $ProductForm = _$ProductFormTearOff();
+
+/// @nodoc
+mixin _$ProductForm {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() valueIsEmpty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? valueIsEmpty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyValueFailure value) valueIsEmpty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyValueFailure value)? valueIsEmpty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductFormCopyWith<$Res> {
+  factory $ProductFormCopyWith(
+          ProductForm value, $Res Function(ProductForm) then) =
+      _$ProductFormCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ProductFormCopyWithImpl<$Res> implements $ProductFormCopyWith<$Res> {
+  _$ProductFormCopyWithImpl(this._value, this._then);
+
+  final ProductForm _value;
+  // ignore: unused_field
+  final $Res Function(ProductForm) _then;
+}
+
+/// @nodoc
+abstract class $EmptyValueFailureCopyWith<$Res> {
+  factory $EmptyValueFailureCopyWith(
+          EmptyValueFailure value, $Res Function(EmptyValueFailure) then) =
+      _$EmptyValueFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmptyValueFailureCopyWithImpl<$Res>
+    extends _$ProductFormCopyWithImpl<$Res>
+    implements $EmptyValueFailureCopyWith<$Res> {
+  _$EmptyValueFailureCopyWithImpl(
+      EmptyValueFailure _value, $Res Function(EmptyValueFailure) _then)
+      : super(_value, (v) => _then(v as EmptyValueFailure));
+
+  @override
+  EmptyValueFailure get _value => super._value as EmptyValueFailure;
+}
+
+/// @nodoc
+
+class _$EmptyValueFailure implements EmptyValueFailure {
+  const _$EmptyValueFailure();
+
+  @override
+  String toString() {
+    return 'ProductForm.valueIsEmpty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EmptyValueFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() valueIsEmpty,
+  }) {
+    return valueIsEmpty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? valueIsEmpty,
+    required TResult orElse(),
+  }) {
+    if (valueIsEmpty != null) {
+      return valueIsEmpty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyValueFailure value) valueIsEmpty,
+  }) {
+    return valueIsEmpty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyValueFailure value)? valueIsEmpty,
+    required TResult orElse(),
+  }) {
+    if (valueIsEmpty != null) {
+      return valueIsEmpty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyValueFailure implements ProductForm {
+  const factory EmptyValueFailure() = _$EmptyValueFailure;
+}
+
+/// @nodoc
 class _$ValueIsValidTearOff {
   const _$ValueIsValidTearOff();
 
